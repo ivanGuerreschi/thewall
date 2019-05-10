@@ -1,7 +1,7 @@
 <?php
 class Posts_model extends CI_Model {
 
-    public function __construct()
+  public function __construct()
     {
 	     $this->load->database();
     }
@@ -17,4 +17,18 @@ class Posts_model extends CI_Model {
 	    $query = $this->db->get_where('posts', array('author' => $author));
 	    return $query->result_array();
     }
+
+    public function set_posts()
+    {
+      $this->load->helper('url');
+
+      $slug = url_title($this->input->post('author'), 'dash', TRUE);
+
+      $data = array(
+        'author' => $this->input->post('author'),
+        'message' => $this->input->post('message')
+      );
+
+    return $this->db->insert('posts', $data);
+  }
 }

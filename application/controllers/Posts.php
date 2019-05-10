@@ -33,4 +33,28 @@ class Posts extends CI_Controller {
     $this->load->view('posts/view', $data);
     $this->load->view('templates/footer');
   }
+
+  public function create()
+  {
+    $this->load->helper('form');
+    $this->load->library('form_validation');
+
+    $data['title'] = 'Write message';
+
+    $this->form_validation->set_rules('author', 'Author', 'required');
+    $this->form_validation->set_rules('message', 'Message', 'required');
+
+    if ($this->form_validation->run() === FALSE)
+    {
+      $this->load->view('templates/header', $data);
+      $this->load->view('posts/create');
+      $this->load->view('templates/footer');
+
+    }
+    else
+    {
+      $this->posts_model->set_posts();
+      redirect('posts/', 'refresh');
+    }
+  }
 }
