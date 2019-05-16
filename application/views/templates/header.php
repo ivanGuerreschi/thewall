@@ -31,9 +31,22 @@
         </li>
       </ul>
 
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+      <?php echo form_open('posts/searchauthor', 'class="form-inline my-2 my-lg-0"');
+        $data = array(
+        'name' => 'author',
+        'placeholder' => 'Search messages by author',
+        'class' => 'form-control mr-sm-2'
+        );
+        echo form_input($data);
+
+        $data = array(
+          'name' => 'submit',
+          'value'=> 'Search',
+          'class'=> 'btn btn-outline-success my-2 my-sm-0'
+        );
+        echo form_submit($data); ?>
+
+      <?php echo form_close();?>
+
   </div>
 </nav>

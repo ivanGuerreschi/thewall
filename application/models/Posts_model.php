@@ -31,4 +31,10 @@ class Posts_model extends CI_Model {
 
     return $this->db->insert('posts', $data);
   }
+
+  public function searchauthor($author)
+  {
+    $query = $this->db->get_where('posts', array('author' => $author));
+    return $query->result_array();
+  }
 }

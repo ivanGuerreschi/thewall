@@ -1,3 +1,4 @@
+<h2><?php echo $title; ?></h2>
 <div class="card-columns">
   <?php foreach ($posts_item as $posts): ?>
     <div class="card">
