@@ -37,4 +37,13 @@ class Posts_model extends CI_Model {
     $query = $this->db->get_where('posts', array('author' => $author));
     return $query->result_array();
   }
+
+  public function reported($id)
+  {
+    $update = array(
+            'reported' => 1,
+            );
+    $this->db->where('id', $id);
+    return $this->db->update('posts', $update);
+  }
 }

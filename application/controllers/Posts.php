@@ -68,4 +68,11 @@ class Posts extends CI_Controller {
     $this->load->view('posts/searchauthor', $data);
     $this->load->view('templates/footer');
   }
+
+  public function reported()
+  {
+    $id = $this->input->post('id');
+    $this->posts_model->reported($id);
+    redirect('posts/', 'refresh');
+  }
 }
